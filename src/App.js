@@ -15,6 +15,7 @@ class App extends React.Component{
 
   async getCharacters(event){
     const axiosRequests = [] ;
+    this.setState({nameList : []});
     const fetchUrl = "https://www.anapioficeandfire.com/api/books/?name="+event.target.options[event.target.selectedIndex].text;
     const bookData = await axios.get(fetchUrl);
     bookData.data[0].characters.forEach((key) => axiosRequests.push(axios.get(key)));
